@@ -1,0 +1,7 @@
+.env
+.git
+.gitignore
+*.md
+vendor/
+composer.lock
+composer.phar

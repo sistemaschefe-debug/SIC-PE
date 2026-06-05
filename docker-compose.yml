@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  sic-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sic-app
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8000}:80"
+    environment:
+      - APP_DEBUG=${APP_DEBUG:-false}
+      - DB_HOST=${DB_HOST:-vm45}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_DATABASE=${DB_DATABASE:-sic}
+      - DB_USERNAME=${DB_USERNAME:-sic_user}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - TZ=${TZ:-America/Recife}
+# Descomente quando tiver domínio configurado no Traefik
+#     labels:
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.sic-app.rule=Host(`sic.seudominio.com`)"
+#       - "traefik.http.routers.sic-app.entrypoints=websecure"
+#       - "traefik.http.routers.sic-app.tls.certresolver=letsencrypt"
+#       - "traefik.http.services.sic-app.loadbalancer.server.port=80"
+    volumes:
+      - doc_veiculos:/var/www/html/doc_veiculos
+      - imagens_notificacoes:/var/www/html/imagens_notificacoes
+    networks:
+      - traefik
+      - backend
+
+volumes:
+  doc_veiculos:
+  imagens_notificacoes:
+
+networks:
+  traefik:
+    external: true
+    name: traefik
+  backend:
+    driver: bridge

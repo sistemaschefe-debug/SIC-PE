@@ -1,0 +1,15 @@
+# Env
+.env
+
+# OS
+Thumbs.db
+.DS_Store
+
+# PHP
+sic/vendor/
+sic/composer.phar
+sic/composer.lock
+
+# IDE
+.idea/
+*.code-workspace
