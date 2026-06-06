@@ -132,7 +132,7 @@ $nivel = $usuario_logado->getNivel();
                                     <li><a href="?pagina=listarNotificacoes">Notificações</a></li>
                                     <li><a href="logout.php">Sair</a></li>
                                 </ul>
-                                <p class="navbar-text navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo utf8_encode($usuario_logado->getCodPosto()->getNomePosto()) . " " . $usuario_logado->getNomeGuerra(); ?></p>
+                                <p class="navbar-text navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo mb_convert_encoding($usuario_logado->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $usuario_logado->getNomeGuerra(); ?></p>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
                     </nav>

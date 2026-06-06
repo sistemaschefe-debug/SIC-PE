@@ -42,7 +42,7 @@ $q = $entityManager->createQuery("select p from Pessoas p order by p.codPosto AS
 $results = $q->getResult();
 foreach ($results as $row) { 
 $id = $row->getIdPessoa();
-$nome = $row->getNomeCompleto() . " - " . utf8_encode($row->getCodPosto()->getNomePosto());
+$nome = $row->getNomeCompleto() . " - " . mb_convert_encoding($row->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 ?>
 <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
 <?php } ?>
@@ -111,7 +111,7 @@ $cod_tipo_brasao = $veiculo->getCodTipoBrasao()->getIdTipoBrasao();
 $tipo_brasao = $veiculo->getCodTipoBrasao()->getNomeTipoBrasao();
 $nr_brasao = $veiculo->getNrBrasao();
 $cod_responsavel = $veiculo->getCodPessoa()->getIdPessoa();
-$responsavel = $veiculo->getCodPessoa()->getNomeCompleto() . " - " . utf8_encode($veiculo->getCodPessoa()->getCodPosto()->getNomePosto());
+$responsavel = $veiculo->getCodPessoa()->getNomeCompleto() . " - " . mb_convert_encoding($veiculo->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 $marca = $veiculo->getMarca();
 $modelo = $veiculo->getModelo();
 $cor = $veiculo->getCor();
@@ -158,7 +158,7 @@ $q = $entityManager->createQuery("select p from Pessoas p order by p.codPosto AS
 $results = $q->getResult();
 foreach ($results as $row) { 
 $id = $row->getIdPessoa();
-$nome = $row->getNomeCompleto() . " - " . utf8_encode($row->getCodPosto()->getNomePosto());
+$nome = $row->getNomeCompleto() . " - " . mb_convert_encoding($row->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 ?>
 <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
 <?php } ?>
@@ -228,7 +228,7 @@ $veiculo = $entityManager->find('VeiculosIdentificados', $id_rec);
 <form class="form-horizontal" method="post" action="Controller/controllerVeiculo.php" >
 <h1>Excluir Veículo</h1>
   <div class="alert alert-warning" role="alert">
-    Confirma a Exclusão do Veículo <?php echo $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca(); ?> pertencente ao <?php echo utf8_encode($veiculo->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $veiculo->getCodPessoa()->getNomeCompleto(); ?>?
+    Confirma a Exclusão do Veículo <?php echo $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca(); ?> pertencente ao <?php echo mb_convert_encoding($veiculo->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $veiculo->getCodPessoa()->getNomeCompleto(); ?>?
   </div>
 
   <input name="id" type="hidden" id="id" value="<?php echo $veiculo->getIdVeiculoIdentificado(); ?>"/>
@@ -245,7 +245,7 @@ $id = $_GET['id'];
 
 $veiculo = $entityManager->find('VeiculosIdentificados', $id);
 $id_veiculo = $veiculo->getIdVeiculoIdentificado();
-$nome_veiculo = $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca() . " pertencente ao " . utf8_encode($veiculo->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $veiculo->getCodPessoa()->getNomeCompleto(); 
+$nome_veiculo = $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca() . " pertencente ao " . mb_convert_encoding($veiculo->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $veiculo->getCodPessoa()->getNomeCompleto(); 
 
 ?>
     <form class="form-horizontal" method="post" action="Controller/controllerVeiculo.php" enctype="multipart/form-data">

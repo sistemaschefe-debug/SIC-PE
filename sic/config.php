@@ -23,5 +23,6 @@ $dbParams = array(
     'dbname'   => $_ENV['DB_DATABASE'] ?? 'sic',
 );
 
-$config = Setup::createAnnotationMetadataConfiguration($entidades, $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration($entidades, $isDevMode, __DIR__ . '/Proxy');
+$config->setAutoGenerateProxyClasses(true);
 $entityManager = EntityManager::create($dbParams, $config);

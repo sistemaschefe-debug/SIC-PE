@@ -14,7 +14,7 @@ $anotador = $entityManager->find('Usuarios', $sessionid);
 <h1>Nova Notificação</h1>
 
 <div class="alert alert-warning" role="alert">
-    Cadastrando Notificação para o Veículo <?php echo $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca(); ?> pertencente ao <?php echo utf8_encode($veiculo->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $veiculo->getCodPessoa()->getNomeCompleto(); ?>?
+    Cadastrando Notificação para o Veículo <?php echo $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca(); ?> pertencente ao <?php echo mb_convert_encoding($veiculo->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $veiculo->getCodPessoa()->getNomeCompleto(); ?>?
 </div>
 
 <div class="form-group">
@@ -73,7 +73,7 @@ $veiculo = $entityManager->find('VeiculosIdentificados', $id_rec);
 <h1>Nova Notificação</h1>
 
 <div class="alert alert-warning" role="alert">
-    Cadastrando Notificação para o Veículo <?php echo $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca(); ?> pertencente ao <?php echo utf8_encode($veiculo->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $veiculo->getCodPessoa()->getNomeCompleto(); ?>?
+    Cadastrando Notificação para o Veículo <?php echo $veiculo->getMarca() . " " . $veiculo->getModelo() . ", Placa: " . $veiculo->getPlaca(); ?> pertencente ao <?php echo mb_convert_encoding($veiculo->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $veiculo->getCodPessoa()->getNomeCompleto(); ?>?
 </div>
 
 <div class="form-group">
@@ -85,7 +85,7 @@ $q = $entityManager->createQuery("select u from Usuarios u where u.nivel = '1' o
 $results = $q->getResult();
 foreach ($results as $row) { 
 $id = $row->getIdUsuario();
-$nome = $row->getNome() . " - " . utf8_encode($row->getCodPosto()->getNomePosto());
+$nome = $row->getNome() . " - " . mb_convert_encoding($row->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 ?>
 <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
 <?php } ?>
@@ -145,7 +145,7 @@ $notificacao = $entityManager->find('Notificacoes', $id_rec);
 
 $id = $notificacao->getIdNotificacao();
 $cod_veiculo = $notificacao->getCodVeiculo()->getIdVeiculoIdentificado();
-$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . utf8_encode($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
+$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . mb_convert_encoding($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
 $se_apresentou = $notificacao->getSeApresentou();
 $local_notificacao = $notificacao->getLocalNotificacao();
 $data = $notificacao->getDataNotificacao();
@@ -173,7 +173,7 @@ $q = $entityManager->createQuery("select u from Usuarios u where u.nivel = '1' o
 $results = $q->getResult();
 foreach ($results as $row) { 
 $id = $row->getIdUsuario();
-$nome = $row->getNome() . " - " . utf8_encode($row->getCodPosto()->getNomePosto());
+$nome = $row->getNome() . " - " . mb_convert_encoding($row->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 ?>
 <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
 <?php } ?>
@@ -245,7 +245,7 @@ $notificacao = $entityManager->find('Notificacoes', $id_rec);
 
 $id = $notificacao->getIdNotificacao();
 $cod_veiculo = $notificacao->getCodVeiculo()->getIdVeiculoIdentificado();
-$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . utf8_encode($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
+$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . mb_convert_encoding($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
 $se_apresentou = $notificacao->getSeApresentou();
 $local_notificacao = $notificacao->getLocalNotificacao();
 $data = $notificacao->getDataNotificacao();
@@ -302,7 +302,7 @@ $notificacao = $entityManager->find('Notificacoes', $id_rec);
 
 $id = $notificacao->getIdNotificacao();
 $cod_veiculo = $notificacao->getCodVeiculo()->getIdVeiculoIdentificado();
-$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . utf8_encode($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
+$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . mb_convert_encoding($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
 $se_apresentou = $notificacao->getSeApresentou();
 $local_notificacao = $notificacao->getLocalNotificacao();
 $data = $notificacao->getDataNotificacao();
@@ -349,7 +349,7 @@ $notificacao = $entityManager->find('Notificacoes', $id_rec);
 
 $id = $notificacao->getIdNotificacao();
 $cod_veiculo = $notificacao->getCodVeiculo()->getIdVeiculoIdentificado();
-$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . utf8_encode($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
+$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . mb_convert_encoding($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
 $se_apresentou = $notificacao->getSeApresentou();
 $local_notificacao = $notificacao->getLocalNotificacao();
 $data = $notificacao->getDataNotificacao();
@@ -394,7 +394,7 @@ $id = $_GET['id'];
 
 $notificacao = $entityManager->find('Notificacoes', $id);
 $id_notificacao = $notificacao->getIdNotificacao();
-$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . utf8_encode($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto(); 
+$veiculo = $notificacao->getCodVeiculo()->getMarca() . " " . $notificacao->getCodVeiculo()->getModelo() . ", Placa: " . $notificacao->getCodVeiculo()->getPlaca() . " pertencente ao " . mb_convert_encoding($notificacao->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $notificacao->getCodVeiculo()->getCodPessoa()->getNomeCompleto(); 
 
 ?>
     <form class="form-horizontal" method="post" action="Controller/controllerNotificacao.php" enctype="multipart/form-data">

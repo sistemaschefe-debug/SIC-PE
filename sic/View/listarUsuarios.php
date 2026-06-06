@@ -25,7 +25,7 @@ $id = $row->getIdUsuario();
 $identidade = $row->getIdentidade();
 $nivel = $row->getNivel();
 $situacao = $row->getSituacao();
-$nome = utf8_encode($row->getCodPosto()->getNomePosto()) . " " . $row->getNome();
+$nome = mb_convert_encoding($row->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $row->getNome();
 $nomeGuerra = $row->getNomeGuerra();
 ?>
 

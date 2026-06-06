@@ -20,7 +20,7 @@ foreach ($results as $row) {
 $id = $row->getIdPosto();
 $nome = $row->getNomePosto();
 ?>
-<option value="<?php echo $id; ?>"><?php echo utf8_encode($nome); ?></option>
+<option value="<?php echo $id; ?>"><?php echo mb_convert_encoding($nome, 'UTF-8', 'ISO-8859-1'); ?></option>
 <?php } ?>
 </select>
     </div>
@@ -160,7 +160,7 @@ $endereco = $pessoa->getEndereco();
     <label for="posto" class="col-sm-2 control-label">Posto / Grad</label>
     <div class="col-sm-10">
 <select name="posto" id="posto" class="form-control">
-<option value="<?php echo $cod_posto; ?>"><?php echo utf8_encode($nome_posto); ?></option>
+<option value="<?php echo $cod_posto; ?>"><?php echo mb_convert_encoding($nome_posto, 'UTF-8', 'ISO-8859-1'); ?></option>
 <?php
 $q = $entityManager->createQuery("select p from Posto p");
 $results = $q->getResult();
@@ -168,7 +168,7 @@ foreach ($results as $row) {
 $id = $row->getIdPosto();
 $nome = $row->getNomePosto();
 ?>
-<option value="<?php echo $id; ?>"><?php echo utf8_encode($nome); ?></option>
+<option value="<?php echo $id; ?>"><?php echo mb_convert_encoding($nome, 'UTF-8', 'ISO-8859-1'); ?></option>
 <?php } ?>
 </select>
     </div>

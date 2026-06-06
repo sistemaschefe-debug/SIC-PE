@@ -2,10 +2,14 @@
     "require": {
         "php": ">=8.1",
         "doctrine/orm": "^2.19",
+        "doctrine/cache": "^1.11",
+        "doctrine/annotations": "1.14.4",
         "symfony/yaml": "^6.4",
         "vlucas/phpdotenv": "^5.6"
     },
     "autoload": {
-        "psr-0": { "": "Model/" }
+        "psr-0": {
+            "": "Model/"
+        }
     }
 }

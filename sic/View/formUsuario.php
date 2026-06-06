@@ -19,7 +19,7 @@ $results = $q->getResult();
 foreach ($results as $row) { 
 $id = $row->getIdPosto();
 //$nome_p = ($row->getNomePosto());
-$nome_p = utf8_encode($row->getNomePosto());
+$nome_p = mb_convert_encoding($row->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 
 ?>
 <option value="<?php echo $id; ?>"><?php echo $nome_p; ?></option>
@@ -121,14 +121,14 @@ $user = $usuario->getUsuario();
     <label for="posto" class="col-sm-2 control-label">Posto / Grad</label>
     <div class="col-sm-10">
 <select name="posto" id="posto" class="form-control">
-<option value="<?php echo $cod_posto; ?>"><?php echo utf8_encode($nome_posto); ?></option>
+<option value="<?php echo $cod_posto; ?>"><?php echo mb_convert_encoding($nome_posto, 'UTF-8', 'ISO-8859-1'); ?></option>
 <?php
 $q = $entityManager->createQuery("select p from Posto p order by p.idPosto ASC");
 $results = $q->getResult();
 foreach ($results as $row) { 
 $id = $row->getIdPosto();
 //$nome_p =	utf8mb4_general_ci($row->getNomePosto());
-$nome_p = utf8_encode($row->getNomePosto());
+$nome_p = mb_convert_encoding($row->getNomePosto(), 'UTF-8', 'ISO-8859-1');
 //	utf8mb4_general_ci
 ?>
 <option value="<?php echo $id; ?>"><?php echo $nome_p; ?></option>
@@ -213,7 +213,7 @@ $senha = $usuario->getSenha();
 <form class="form-horizontal" method="post" action="Controller/controllerUsuario.php" >
 <h1>Edição de Senha</h1>
 <div class="alert alert-warning" role="alert">
-    Editando Senha de <?php echo utf8_encode($usuario->getCodPosto()->getNomePosto()) . " " . $usuario->getNome(); ?>?
+    Editando Senha de <?php echo mb_convert_encoding($usuario->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $usuario->getNome(); ?>?
   </div>
   <div class="form-group">
     <label for="senha" class="col-sm-2 control-label">Nova Senha</label>
@@ -242,7 +242,7 @@ $usuario = $entityManager->find('Usuarios', $id_rec);
 <form class="form-horizontal" method="post" action="Controller/controllerUsuario.php" >
 <h1>Excluir Usuário</h1>
   <div class="alert alert-warning" role="alert">
-    Confirma a Exclusão do Usuário <?php echo utf8_encode($usuario->getCodPosto()->getNomePosto()) . " " . $usuario->getNome(); ?>?
+    Confirma a Exclusão do Usuário <?php echo mb_convert_encoding($usuario->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $usuario->getNome(); ?>?
   </div>
 
   <input name="id" type="hidden" id="id" value="<?php echo $usuario->getIdUsuario(); ?>"/>

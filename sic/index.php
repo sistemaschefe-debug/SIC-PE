@@ -2,18 +2,34 @@
 if (!isset($_SESSION))
     session_start();
 
-if (isset($_SESSION['idUsuario']) && isset($_SESSION['nivel'])) {
-
-    $sessionid = $_SESSION['idUsuario'];
-} else {
-
+if (!isset($_SESSION['idUsuario']) || !isset($_SESSION['nivel'])) {
     session_unset();
     session_destroy();
     header("Location: login.php");
+    exit;
 }
+
 require "config.php";
 
-$usuario_logado = $entityManager->find('Usuarios', $sessionid);
+$sessionid = (int) $_SESSION['idUsuario'];
+if ($sessionid <= 0) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
+try {
+    $usuario_logado = $entityManager->find('Usuarios', $sessionid);
+    if (!$usuario_logado) {
+        throw new Exception("Usuário não encontrado");
+    }
+} catch (Exception $e) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
 $nivel = $usuario_logado->getNivel();
 ?>
 

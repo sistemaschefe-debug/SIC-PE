@@ -27,7 +27,7 @@ $results = $q->getResult();
 foreach ($results as $row) {	
 $id = $row->getIdNotificacao();
 $veiculo = $row->getCodVeiculo()->getMarca() . " - " . $row->getCodVeiculo()->getModelo() . " - " . $row->getCodVeiculo()->getPlaca();
-$responsavel = utf8_encode($row->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $row->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
+$responsavel = mb_convert_encoding($row->getCodVeiculo()->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $row->getCodVeiculo()->getCodPessoa()->getNomeCompleto();
 $local = $row->getLocalNotificacao();
 $data = $row->getDataNotificacao()->format('d/m/Y');
 $hora = $row->getHoraNotificacao() . "h";

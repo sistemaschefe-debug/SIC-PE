@@ -29,7 +29,7 @@ foreach ($results as $row) {
 $id = $row->getIdVeiculoIdentificado();
 $tipo_brasao = $row->getCodTipoBrasao()->getNomeTipoBrasao();
 $nr_brasao = $row->getNrBrasao();
-$responsavel = utf8_encode($row->getCodPessoa()->getCodPosto()->getNomePosto()) . " " . $row->getCodPessoa()->getNomeCompleto();
+$responsavel = mb_convert_encoding($row->getCodPessoa()->getCodPosto()->getNomePosto(), 'UTF-8', 'ISO-8859-1') . " " . $row->getCodPessoa()->getNomeCompleto();
 $marca = $row->getMarca();
 $modelo = $row->getModelo();
 $cor = $row->getCor();

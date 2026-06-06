@@ -44,7 +44,7 @@ $endereco = $row->getEndereco();
 ?>
 
 					<tr>
-					    <td><?php echo utf8_encode($posto); ?></td>
+					    <td><?php echo mb_convert_encoding($posto, 'UTF-8', 'ISO-8859-1'); ?></td>
 						<td><?php echo $arma; ?></td>
 						<td><?php echo $nome; ?></td>
 						<td><?php echo $nomeGuerra; ?></td>
